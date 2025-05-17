@@ -1,9 +1,9 @@
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from accounts.serializers import NotificationSerializer
+from fiko.apps.accounts.serializers import NotificationSerializer
 from rest_framework.permissions import IsAuthenticated
-from accounts.models import Notification
+from fiko.apps.accounts.models import Notification
 
 
 class Notifications(APIView):

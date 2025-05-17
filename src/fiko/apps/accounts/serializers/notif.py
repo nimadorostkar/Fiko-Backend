@@ -1,4 +1,4 @@
-from accounts.models import Notification
+from fiko.apps.accounts.models import Notification
 from rest_framework import serializers
 
 class NotificationSerializer(serializers.ModelSerializer):

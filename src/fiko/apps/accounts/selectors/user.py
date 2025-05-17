@@ -1,4 +1,4 @@
-from accounts.models import User
+from fiko.apps.accounts.models import User
 
 
 def user_exists(**kwargs):

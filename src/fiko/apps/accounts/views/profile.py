@@ -1,7 +1,7 @@
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from accounts.serializers import UserSerializer, UserUpdateSerializer, UserProfilePictureSerializer
+from fiko.apps.accounts.serializers import UserSerializer, UserUpdateSerializer, UserProfilePictureSerializer
 from rest_framework.permissions import IsAuthenticated
 
 class Profile(APIView):

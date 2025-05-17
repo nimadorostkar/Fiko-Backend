@@ -1,5 +1,5 @@
 from kavenegar import APIException, HTTPException, KavenegarAPI
-from config.settings import KAVENEGAR_API_KEY, KAVENEGAR_TEMPLATE
+from fiko.core.common import KAVENEGAR_API_KEY, KAVENEGAR_TEMPLATE
 
 
 def send_sms_otp(phone_number: str, code: str) -> bool:

@@ -155,7 +155,7 @@ REFRESH_TTL = int(os.getenv("REFRESH_TTL", default="15"))  # days
 
 # REST FRAMEWORK CONFIGURATION
 REST_FRAMEWORK = {
-    "DEFAULT_AUTHENTICATION_CLASSES": ("accounts.backends.JWTAuthentication",),
+    "DEFAULT_AUTHENTICATION_CLASSES": ("fiko.apps.accounts.backends.JWTAuthentication",),
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
     "DEFAULT_THROTTLE_RATES": {"otp": os.getenv("OTP_THROTTLE_RATE", default="10/min"), },
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',

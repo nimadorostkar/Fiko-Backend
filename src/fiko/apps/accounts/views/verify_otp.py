@@ -1,11 +1,11 @@
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from accounts.functions import get_user_data, login
-from accounts.models import OneTimePassword
-from accounts.selectors import get_user
-from config.settings import ACCESS_TTL
-from accounts.serializers import UserSerializer
+from fiko.apps.accounts.functions import get_user_data, login
+from fiko.apps.accounts.models import OneTimePassword
+from fiko.apps.accounts.selectors import get_user
+from fiko.core.common import ACCESS_TTL
+from fiko.apps.accounts.serializers import UserSerializer
 
 
 class VerifyOTP(APIView):

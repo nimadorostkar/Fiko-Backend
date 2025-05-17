@@ -2,8 +2,8 @@ from django.utils.translation import gettext as _
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from accounts.functions import refresh as refresh_function
-from config.settings import ACCESS_TTL
+from fiko.apps.accounts.functions import refresh as refresh_function
+from fiko.core.common import ACCESS_TTL
 
 class Refresh(APIView):
     permission_classes = []

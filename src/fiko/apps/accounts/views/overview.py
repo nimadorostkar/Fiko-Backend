@@ -1,12 +1,9 @@
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from accounts.serializers import UserSerializer
+from fiko.apps.accounts.serializers import UserSerializer
 from rest_framework.permissions import IsAuthenticated
-from accounts.models import Notification
-from wallet.models import Wallet
-from service.models import Service
-from service.serializers import ServiceSerializer
+from fiko.apps.accounts.models import Notification
 
 
 class OverView(APIView):

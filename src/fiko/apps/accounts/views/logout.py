@@ -1,7 +1,7 @@
 from django.utils.translation import gettext as _
 from rest_framework.views import APIView
 from fiko.apps.accounts.functions import expire
-from config.responses import ok
+from fiko.core.functions.responses import ok
 
 
 class Logout(APIView):

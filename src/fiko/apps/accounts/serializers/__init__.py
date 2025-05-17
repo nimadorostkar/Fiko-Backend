@@ -1,2 +1,2 @@
-from accounts.serializers.user import UserSerializer, UserUpdateSerializer, UserProfilePictureSerializer
-from accounts.serializers.notif import NotificationSerializer
+from fiko.apps.accounts.serializers.user import UserSerializer, UserUpdateSerializer, UserProfilePictureSerializer
+from fiko.apps.accounts.serializers.notif import NotificationSerializer

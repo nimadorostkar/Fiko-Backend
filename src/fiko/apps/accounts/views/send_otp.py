@@ -4,9 +4,9 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.throttling import AnonRateThrottle
 from rest_framework.views import APIView
-from accounts.functions import send_sms_otp
-from accounts.models import OneTimePassword
-from accounts.models import User
+from fiko.apps.accounts.functions import send_sms_otp
+from fiko.apps.accounts.models import OneTimePassword
+from fiko.apps.accounts.models import User
 
 phone_number_regex = re.compile(r"^09\d{9}")
 

@@ -1,6 +1,6 @@
 from rest_framework import authentication
-from accounts.functions import claim_token, validate_token
-from accounts.selectors import get_user
+from fiko.apps.accounts.functions import claim_token, validate_token
+from fiko.apps.accounts.selectors import get_user
 
 
 class JWTAuthentication(authentication.BaseAuthentication):

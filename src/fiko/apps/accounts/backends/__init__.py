@@ -1,1 +1,1 @@
-from accounts.backends.jwt_auth import JWTAuthentication
+from fiko.apps.accounts.backends.jwt_auth import JWTAuthentication

@@ -2,8 +2,8 @@ from datetime import datetime, timedelta
 import jwt
 from django.core.cache import cache
 from django.utils import timezone
-from accounts.selectors import user_exists
-from config.settings import ACCESS_TTL, JWT_SECRET, REFRESH_TTL
+from fiko.apps.accounts.selectors import user_exists
+from fiko.core.common import ACCESS_TTL, JWT_SECRET, REFRESH_TTL
 
 def gen_token(data):
     return jwt.encode(payload=data, key=JWT_SECRET, algorithm="HS512")
