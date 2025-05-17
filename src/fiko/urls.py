@@ -1,9 +1,10 @@
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework_simplejwt.views import TokenObtainPairView,TokenRefreshView
+from . import views as HomeViews
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/users', include(('fiko.apps.users.urls', 'fiko.apps.users'), namespace='users'))
+    path('', HomeViews.index, name='home'),
+    path("api/v1/accounts/", include("fiko.apps.accounts.urls")),
 ]

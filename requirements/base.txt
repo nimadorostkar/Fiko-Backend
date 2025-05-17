@@ -9,3 +9,6 @@ httptools==0.6.4
 whitenoise==6.9.0
 PyJWT==2.10.1
 Pillow==11.2.1
+gunicorn==23.0.0
+psycopg2-binary==2.9.10
+django-import-export==4.3.7

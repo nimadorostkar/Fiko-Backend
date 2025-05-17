@@ -1,11 +1,9 @@
 from pathlib import Path
+from dotenv import load_dotenv
+import os
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-_#2hxi#d@7!6bg((p@tmy-)#y3i_ad=n!pm4@_h2c60+1m9gty'
@@ -16,26 +14,39 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 
-# Application definition
+# APP CONFIGURATION
+DJANGO_APPS = (
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "django.contrib.admin",
+    "django.contrib.admindocs",
+    "django.contrib.sites",
+)
+THIRD_PARTY_APPS = (
+    "rest_framework",
+    "django_filters",
+    "corsheaders",
+    "gunicorn",
+    "whitenoise",
+)
+# Apps specific for this project go here.
+LOCAL_APPS = (
+    "fiko.apps.accounts",
+)
 
-INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+# END APP CONFIGURATION
 
-    'rest_framework',
-    'rest_framework_simplejwt',
 
-    'trello.apps.core',
-    'trello.apps.users'
-]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -43,12 +54,14 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'trello.urls'
+ROOT_URLCONF = 'fiko.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        "DIRS": [
+            BASE_DIR / "templates/",
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -61,7 +74,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'trello.wsgi.application'
+WSGI_APPLICATION = 'fiko.wsgi.application'
 
 
 # Database
@@ -77,7 +90,6 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
-AUTH_USER_MODEL='users.User'
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -124,8 +136,29 @@ MEDIA_ROOT = '/vol/web/media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+
+
+# AUTH USER MODEL CONFIGURATION
+AUTH_USER_MODEL = "accounts.User"
+# END AUTH USER MODEL CONFIGURATION
+
+# OTP CONFIGURATION
+OTP_CODE_LENGTH = int(os.getenv("OTP_CODE_LENGTH", default="4"))
+OTP_TTL = int(os.getenv("OTP_TTL", default="120"))
+# END OTP CONFIGURATION
+
+# JWT SETIINGS
+ACCESS_TTL = int(os.getenv("ACCESS_TTL", default="7"))  # days
+REFRESH_TTL = int(os.getenv("REFRESH_TTL", default="15"))  # days
+# END JWT SETTINGS
+
+
+# REST FRAMEWORK CONFIGURATION
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
+    "DEFAULT_AUTHENTICATION_CLASSES": ("accounts.backends.JWTAuthentication",),
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+    "DEFAULT_THROTTLE_RATES": {"otp": os.getenv("OTP_THROTTLE_RATE", default="10/min"), },
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10,
 }
+# END REST FRAMEWORK CONFIGURATION
