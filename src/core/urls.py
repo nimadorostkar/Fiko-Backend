@@ -1,9 +1,8 @@
 from django.contrib import admin
-from django.urls import path, include
-from core import views as HomeViews
+from django.urls import path,include
+from core import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', HomeViews.index, name='home'),
-    path("api/v1/accounts/", include("apps.accounts.urls")),
+    path('', views.index, name='home'),
 ]
