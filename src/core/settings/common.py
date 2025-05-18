@@ -29,6 +29,7 @@ THIRD_PARTY_APPS = (
     "corsheaders",
     "gunicorn",
     "whitenoise",
+    "import_export",
 )
 # Apps specific for this project go here.
 LOCAL_APPS = (
@@ -103,6 +104,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+SITE_ID = 1
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
@@ -110,8 +112,8 @@ USE_TZ = True
 STATIC_URL = '/static/static/'
 MEDIA_URL = '/static/media/'
 
-STATIC_ROOT = '/vol/web/static'
-MEDIA_ROOT = '/vol/web/media'
+STATIC_ROOT = 'static'
+MEDIA_ROOT = 'media'
 
 
 # Default primary key field type
