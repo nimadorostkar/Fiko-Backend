@@ -33,6 +33,8 @@ THIRD_PARTY_APPS = (
     "gunicorn",
     "whitenoise",
     "import_export",
+    "rest_framework_swagger",
+    "drf_yasg",
 )
 # Apps specific for this project go here.
 LOCAL_APPS = (

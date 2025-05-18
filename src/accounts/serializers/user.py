@@ -4,11 +4,10 @@ from django.contrib.auth import authenticate
 from accounts.functions import login
 from django.utils.text import slugify
 
-class UserShortSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
         fields = "__all__"
-
 
 class LoginSerializer(serializers.Serializer):
     email = serializers.EmailField()
@@ -33,5 +32,3 @@ class LoginSerializer(serializers.Serializer):
             "access_token": access,
             "user_data": UserSerializer(user).data,
         }
-
-
