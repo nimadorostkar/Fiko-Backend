@@ -102,6 +102,11 @@ docker-compose up --build
 ```bash
 docker-compose exec web python manage.py createsuperuser
 ```
+### For Docker Desktop (macOS/Windows)
+
+```bash
+docker compose exec web python manage.py createsuperuser
+```
 
 ---
 
