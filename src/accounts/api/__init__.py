@@ -1,1 +1,1 @@
-from accounts.api.login import Login
+from accounts.api.login import LoginAPIView
