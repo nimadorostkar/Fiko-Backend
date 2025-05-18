@@ -1,25 +1,25 @@
-FROM hemanhp/djbase:latest
+# Dockerfile
 
-COPY ./requirements /requirements
-COPY ./scripts /scripts
-COPY ./src /src
+FROM python:3.12-slim
 
-WORKDIR src
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
 
-EXPOSE 8000
+WORKDIR /app
 
-RUN /py/bin/pip install -r /requirements/development.txt
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libpq-dev \
+    netcat \
+    && rm -rf /var/lib/apt/lists/*
 
-RUN chmod -R +x /scripts && \
-    mkdir -p /vol/web/static && \
-    mkdir -p /vol/web/media && \
-    adduser --disabled-password --no-create-home trello && \
-    chown -R trello:trello /vol && \
-    chmod -R 755 /vol
+COPY src/requirements/base.txt requirements.txt
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
 
+COPY ./src /app
 
-ENV PATH="/scripts:/py/bin:$PATH"
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
-USER fiko
-
-CMD ["run.sh"]
+ENTRYPOINT ["/entrypoint.sh"]

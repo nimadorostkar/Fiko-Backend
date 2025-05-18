@@ -1,59 +1,123 @@
 # Fiko-Backend
+## Resolve customer requests instantly with AI customer service. 
 
 [![](https://img.shields.io/badge/Python-3.12.4-orange)](https://www.python.org/)
 [![](https://img.shields.io/badge/Django-5.2.1-green)](https://www.djangoproject.com/)
 
 
-## Resolve customer requests instantly with AI customer service
+## 🐍 Django Dockerized Project 
+This project is a Django application containerized with Docker, using PostgreSQL as the database and Redis for caching or async task queuing. The Django source code is located inside the `src/` directory.
 
+---
 
+## 🚀 Features
 
+- Django 5+ (inside `src/`)
+- PostgreSQL 15
+- Redis 7
+- Docker & Docker Compose
+- Environment-based settings
+- Volume persistence for database, media, and static files
 
+---
 
+## 📁 Project Structure
 
-## How to run
+```
+.
+├── Dockerfile
+├── docker-compose.yml
+├── entrypoint.sh
+├── .env
+├── README.md
+└── src/
+    ├── manage.py
+    ├── core/
+    └── accounts/
+    ...
+```
 
-1. Clone this repository
+---
+
+## 🧩 Requirements
+
+- [Docker](https://www.docker.com/)
+- [Docker Compose](https://docs.docker.com/compose/)
+
+---
+
+## ⚙️ Setup
+
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/nimadorostkar/Fiko-Backend.git
+cd Fiko-Backend
 ```
 
-2. Install dependencies
+### 2. Create your `.env` file
+
+```env
+# .env
+STAGE="DEV"
+DEBUG=True
+SECRET_KEY=your_secret_key
+DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
+POSTGRES_DB=your_db_name
+POSTGRES_USER=your_user
+POSTGRES_PASSWORD=your_password
+POSTGRES_HOST=db
+POSTGRES_PORT=5432
+CSRF_TRUSTED_ORIGINS=""
+CSRF_COOKIE_DOMAIN=""
+STATIC_URL=""
+MEDIA_URL=""
+REDIS_URL=""
+```
+
+### 3. Build and run with Docker
 
 ```bash
-pip install -r requirements/development.txt 
+docker-compose build
+docker-compose up
 ```
 
-3. Make .env file (use either prod.env.template or dev.env.template to create .env file)
+This will:
+- Build the Django app
+- Run `migrate` and `collectstatic` automatically
+- Start the app on `http://localhost:8000`
 
-4. Run the following commands to get started (Development)
+---
+
+## 📦 Useful Commands
+
+### Rebuild containers
 
 ```bash
-python manage.py makemigrations
-python manage.py migrate
-python manage.py createsuperuser
-python manage.py runserver
+docker-compose up --build
 ```
 
-5. Make sure you have Postgredb running (Production)
-
-6. you can run them manually, after the containers spin up, like so:
+### Run a command inside the web container
 
 ```bash
-docker-compose exec web python manage.py makemigrations
-docker-compose exec web python manage.py migrate   
-docker exec -it container_id python manage.py createsuperuser
-
+docker-compose exec web python manage.py createsuperuser
 ```
 
+---
 
-7. Build the image and spin up the two containers
+## 🗂️ Volumes
+
+- `postgres_data`: Stores PostgreSQL database data
+- `static_volume`: For Django `collectstatic` output
+- `media_volume`: For user uploads
+
+---
+
 
 ```bash
 docker-compose up -d --build
 ```
 
 
-
  enjoy!
+ 
