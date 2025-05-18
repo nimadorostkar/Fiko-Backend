@@ -10,14 +10,13 @@ from sentry_sdk.integrations.django import DjangoIntegration
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'trello',
-        'USER': 'trello',
-        'PASSWORD':'123@456',
+        'NAME': environ.get("POSTGRES_DB"),
+        'USER': environ.get("POSTGRES_USER"),
+        'PASSWORD': environ.get("POSTGRES_PASSWORD"),
         'HOST':'db',
         'PORT': 5432
     }
 }
-
 
 sentry_sdk.init(
     dsn="https://7b512e5f879f41dcbaeb25d4c8b3900b@o1070704.ingest.sentry.io/6066938",
