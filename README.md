@@ -118,6 +118,12 @@ docker-compose exec web python manage.py createsuperuser
 docker-compose up -d --build
 ```
 
+### Check if you're using Docker Desktop (macOS/Windows)
+```bash
+docker compose build
+docker compose up --build
+```
+
 
  enjoy!
  
