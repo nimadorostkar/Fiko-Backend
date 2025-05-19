@@ -9,8 +9,12 @@ class LoginAPIView(APIView):
         serializer = LoginSerializer(data=request.data)
         if serializer.is_valid():
             response = Response(serializer.validated_data, status=status.HTTP_200_OK)
-            response.set_cookie("HTTP_ACCESS",f"Bearer {serializer.validated_data['access_token']}",
-                                max_age=ACCESS_TTL * 24 * 3600,
-                                secure=True,httponly=True,samesite="None",)
+            response.set_cookie(
+                key="HTTP_ACCESS",  # or "jwt" depending on your code
+                value=f"Bearer {serializer.validated_data['access_token']}",
+                httponly=True,
+                max_age=ACCESS_TTL * 24 * 3600,
+                secure=False,  # set to False for local development
+                samesite='Lax')
             return response
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

@@ -26,3 +26,9 @@ class RegisterSerializer(serializers.ModelSerializer):
             "access_token": access,
             "user_data": UserShortSerializer(user).data,
         }
+
+
+class CompleteRegisterSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = get_user_model()
+        fields = ('first_name','last_name','age','gender','address','description')
