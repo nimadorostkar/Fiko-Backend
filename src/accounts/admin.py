@@ -1,6 +1,11 @@
 from django.contrib import admin
 from accounts.models import User
 from import_export.admin import ImportExportModelAdmin
+
+admin.site.site_header = "Fiko Admin Panel"
+admin.site.site_title = "Fiko"
+admin.site.index_title = "Fiko Dashboard"
+
 class UserAdmin(ImportExportModelAdmin):
     field_list = (
     'is_profile_fill', 'id', 'first_name', 'last_name', 'email', 'phone_number', 'username', 'age', 'gender',

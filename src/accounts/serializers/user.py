@@ -25,7 +25,10 @@ class LoginSerializer(serializers.Serializer):
         if user is None:
             raise serializers.ValidationError("Invalid email or password.")
 
-        access, refresh = login(user)
+        try:
+            access, refresh = login(user)
+        except Exception as e:
+            raise serializers.ValidationError(f"Token generation error: {str(e)}")
 
         return {
             "refresh_token": refresh,
