@@ -11,3 +11,7 @@ class RegisterView(APIView):
             #serializer.save()
             return Response(result, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+# todo CompleteRegisterView
