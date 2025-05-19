@@ -10,7 +10,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = environ.get("SECRET_KEY"),
-JWT_SECRET = environ.get("SECRET_KEY"),
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -148,6 +147,7 @@ OTP_TTL = int(os.getenv("OTP_TTL", default="120"))
 # END OTP CONFIGURATION
 
 # JWT SETIINGS
+JWT_SECRET = "jango-insecure-_#2hxi#d@7!6bg((p@tmy-)#y3i_ad=n!pm4@_h2c60+1m9gty"
 ACCESS_TTL = int(os.getenv("ACCESS_TTL", default="7"))  # days
 REFRESH_TTL = int(os.getenv("REFRESH_TTL", default="15"))  # days
 # END JWT SETTINGS

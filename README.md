@@ -73,6 +73,7 @@ CSRF_COOKIE_DOMAIN=""
 STATIC_URL=""
 MEDIA_URL=""
 REDIS_URL=""
+REDIS_URL=redis://redis:6379/0
 ```
 
 ### 3. Build and run with Docker

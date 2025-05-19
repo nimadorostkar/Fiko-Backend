@@ -11,8 +11,7 @@ logger = logging.getLogger(__name__)
 
 def gen_token(data):
     try:
-        token = jwt.encode(payload=data, key=JWT_SECRET, algorithm="HS512")
-        return token if isinstance(token, str) else token.decode('utf-8')
+        return jwt.encode(payload=data, key=JWT_SECRET, algorithm="HS512")
     except Exception as e:
         logger.error(f"Token generation failed: {e}")
         return None
