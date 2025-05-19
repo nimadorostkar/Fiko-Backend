@@ -17,7 +17,6 @@ class UserSerializer(serializers.ModelSerializer):
 class LoginSerializer(serializers.Serializer):
     email = serializers.EmailField()
     password = serializers.CharField(write_only=True)
-
     def validate(self, data):
         email = data.get('email')
         password = data.get('password')
@@ -35,3 +34,13 @@ class LoginSerializer(serializers.Serializer):
             "access_token": access,
             "user_data": UserShortSerializer(user).data,
         }
+
+class UserUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = get_user_model()
+        fields = ('first_name','last_name','age','gender','address','description')
+
+class UserProfilePictureSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = get_user_model()
+        fields = ("profile_picture",)
