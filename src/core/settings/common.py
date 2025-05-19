@@ -4,8 +4,6 @@ import os
 from os import environ
 
 load_dotenv()
-
-load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
@@ -76,7 +74,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'core.wsgi.application'
-
 
 
 # CACHING CONFIGURATION
