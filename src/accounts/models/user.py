@@ -22,7 +22,7 @@ class User(AbstractUser):
     last_name = models.CharField(max_length=250,null=True,blank=True)
     username = models.CharField(max_length=250,unique=True)
     email = models.EmailField(max_length=250,unique=True)
-    phone_number = models.CharField(validators=[PHONE_REGEX],max_length=11,unique=True)
+    phone_number = models.CharField(validators=[PHONE_REGEX],max_length=11,unique=True,null=True,blank=True)
     description = models.TextField(max_length=1000,null=True,blank=True)
     profile_picture = models.ImageField(default="user_img/default.png",upload_to="user_img",blank=True,null=True)
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
