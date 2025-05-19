@@ -21,20 +21,15 @@ class LoginSerializer(serializers.Serializer):
     def validate(self, data):
         email = data.get('email')
         password = data.get('password')
-
         if not email or not password:
             raise serializers.ValidationError("Email and password are required.")
-
         user = authenticate(username=email, password=password)
-
         if user is None:
             raise serializers.ValidationError("Invalid email or password.")
-
         try:
             access, refresh = login(user)
         except Exception as e:
             raise serializers.ValidationError(f"Token generation error: {str(e)}")
-
         return {
             "refresh_token": refresh,
             "access_token": access,
