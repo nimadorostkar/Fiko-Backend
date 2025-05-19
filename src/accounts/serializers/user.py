@@ -2,7 +2,12 @@ from django.contrib.auth import get_user_model
 from rest_framework import serializers
 from django.contrib.auth import authenticate
 from accounts.functions import login
-from django.utils.text import slugify
+
+class UserShortSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = get_user_model()
+        fields = ('is_profile_fill','id','first_name','last_name','email','phone_number','username','age',
+                  'gender','address','description','profile_picture','updated_at','created_at')
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -33,5 +38,5 @@ class LoginSerializer(serializers.Serializer):
         return {
             "refresh_token": refresh,
             "access_token": access,
-            "user_data": UserSerializer(user).data,
+            "user_data": UserShortSerializer(user).data,
         }
