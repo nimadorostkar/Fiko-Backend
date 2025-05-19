@@ -3,7 +3,6 @@ from rest_framework.views import APIView
 from accounts.functions import expire
 from core.responses import ok
 
-
 class Logout(APIView):
     def get(self, request, *args, **kwargs):
         # Fetch access token from cookies or headers
@@ -28,7 +27,7 @@ class Logout(APIView):
             "HTTP_ACCESS",
             "",
             path="/",
-            secure=True,
+            secure=False,
             httponly=True,
             samesite="None",
             max_age=0,
