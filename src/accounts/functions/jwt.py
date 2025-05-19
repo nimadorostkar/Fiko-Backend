@@ -4,9 +4,18 @@ from django.core.cache import cache
 from django.utils import timezone
 from accounts.selectors import user_exists
 from core.settings import ACCESS_TTL, JWT_SECRET, REFRESH_TTL
+import logging
+
+logger = logging.getLogger(__name__)
+
 
 def gen_token(data):
-    return jwt.encode(payload=data, key=JWT_SECRET, algorithm="HS512")
+    try:
+        token = jwt.encode(payload=data, key=JWT_SECRET, algorithm="HS512")
+        return token if isinstance(token, str) else token.decode('utf-8')
+    except Exception as e:
+        logger.error(f"Token generation failed: {e}")
+        return None
 
 
 def __gen_tokens(user_id):
@@ -30,6 +39,8 @@ def login(user):
 
 def claim_token(token):
     return jwt.decode(jwt=token, key=JWT_SECRET, algorithms=["HS512"])
+
+
 
 
 def __has_keys(data: dict, *keys):
