@@ -28,6 +28,13 @@ class User(AbstractUser):
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
     age = models.PositiveIntegerField(blank=True,null=True)
     address = models.CharField(max_length=1000,null=True,blank=True)
+    organisation = models.CharField(max_length=500,null=True,blank=True)
+    state = models.CharField(max_length=250,null=True,blank=True)
+    zip_code = models.CharField(max_length=250,null=True,blank=True)
+    country = models.CharField(max_length=250,null=True,blank=True)
+    language = models.CharField(max_length=250,null=True,blank=True)
+    time_zone = models.CharField(max_length=250,null=True,blank=True)
+    currency = models.CharField(max_length=250,null=True,blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

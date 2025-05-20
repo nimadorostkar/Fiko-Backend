@@ -31,4 +31,4 @@ class RegisterSerializer(serializers.ModelSerializer):
 class CompleteRegisterSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
-        fields = ('first_name','last_name','age','gender','address','description')
+        fields = ('first_name','last_name','age','gender','address','organisation','description','state','zip_code','country','language','time_zone','currency')

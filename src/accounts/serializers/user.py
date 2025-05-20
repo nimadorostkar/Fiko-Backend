@@ -7,7 +7,8 @@ class UserShortSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
         fields = ('is_profile_fill','id','first_name','last_name','email','phone_number','username','age',
-                  'gender','address','description','profile_picture','updated_at','created_at')
+                  'gender','address','organisation','description','profile_picture','updated_at','created_at',
+                  'state','zip_code','country','language','time_zone','currency')
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -38,7 +39,7 @@ class LoginSerializer(serializers.Serializer):
 class UserUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
-        fields = ('first_name','last_name','age','gender','address','description')
+        fields = ('first_name','last_name','age','gender','address','organisation','description','state','zip_code','country','language','time_zone','currency')
 
 class UserProfilePictureSerializer(serializers.ModelSerializer):
     class Meta:
