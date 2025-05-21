@@ -5,6 +5,7 @@ from django.core.validators import RegexValidator
 from django.utils.translation import gettext_lazy as _
 from django.utils.safestring import mark_safe
 
+
 class User(AbstractUser):
     PHONE_REGEX = RegexValidator(
         regex=r"^09\d{9}",
