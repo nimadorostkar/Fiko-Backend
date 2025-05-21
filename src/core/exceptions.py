@@ -12,4 +12,3 @@ class CustomException(exceptions.APIException):
             self.detail = detail
         if code:
             self.status_code = code
-

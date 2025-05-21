@@ -37,7 +37,6 @@ data=None, headers=None,
             content_type=content_type
         )
 
-
 class SuccessResponse(CustomResponse):
 
     def __init__(self, data=None, meta=None, status_code: int = 200, 
@@ -157,7 +156,6 @@ def not_implemented() -> UnsuccessfulResponse:
         headers=None,
         content_type='application/json'
     )
-
 
 def generic_unsuccessful(status_code: int, errors, headers=None,
                          content_type='application/json') -> UnsuccessfulResponse:
