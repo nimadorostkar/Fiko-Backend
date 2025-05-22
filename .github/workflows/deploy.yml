@@ -11,6 +11,21 @@ jobs:
     name: Run Tests
     runs-on: ubuntu-latest
 
+    services:
+      postgres:
+        image: postgres:13
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: FikoUsr
+          POSTGRES_PASSWORD: FikoPass123!!!
+          POSTGRES_DB: FikoDB
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -38,9 +53,10 @@ jobs:
           POSTGRES_DB: "FikoDB"
           POSTGRES_USER: "FikoUsr"
           POSTGRES_PASSWORD: "FikoPass123!!!"
-          POSTGRES_HOST: "0.0.0.0"
+          POSTGRES_HOST: "localhost"
           POSTGRES_PORT: 5432
           REDIS_URL: "redis://redis:6379/0"
+
 
   deploy:
     name: Deploy to AWS EC2
