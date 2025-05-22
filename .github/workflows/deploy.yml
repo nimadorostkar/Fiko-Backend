@@ -38,7 +38,7 @@ jobs:
           POSTGRES_DB: "FikoDB"
           POSTGRES_USER: "FikoUsr"
           POSTGRES_PASSWORD: "FikoPass123!!!"
-          POSTGRES_HOST: "db"
+          POSTGRES_HOST: "0.0.0.0"
           POSTGRES_PORT: 5432
           REDIS_URL: "redis://redis:6379/0"
 
