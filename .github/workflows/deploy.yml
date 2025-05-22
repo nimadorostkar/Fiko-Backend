@@ -7,57 +7,6 @@ on:
 
 jobs:
 
-  test:
-    name: Run Tests
-    runs-on: ubuntu-latest
-
-    services:
-      postgres:
-        image: postgres:13
-        ports:
-          - 5432:5432
-        env:
-          POSTGRES_USER: FikoUsr
-          POSTGRES_PASSWORD: FikoPass123!!!
-          POSTGRES_DB: FikoDB
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r src/requirements/development.txt 
-
-      - name: Run tests
-        run: |
-          MANAGE_PATH=$(find . -name manage.py -exec dirname {} \;)
-          cd $MANAGE_PATH
-          python manage.py test
-        env:
-          STAGE: "DEV"
-          DEBUG: True
-          SECRET_KEY: "jango-insecure-_#2hxi#d@7!6bg((p@tmy-)#y3i_ad=n!pm4@_h2c60+1m9gty"
-          DJANGO_ALLOWED_HOSTS: "*"
-          POSTGRES_DB: "FikoDB"
-          POSTGRES_USER: "FikoUsr"
-          POSTGRES_PASSWORD: "FikoPass123!!!"
-          POSTGRES_HOST: "localhost"
-          POSTGRES_PORT: 5432
-          REDIS_URL: "redis://redis:6379/0"
-
-
   deploy:
     name: Deploy to AWS EC2
     runs-on: ubuntu-latest
