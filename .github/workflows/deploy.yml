@@ -32,6 +32,15 @@ jobs:
           python manage.py test
         env:
           STAGE: "DEV"
+          DEBUG: True
+          SECRET_KEY: "jango-insecure-_#2hxi#d@7!6bg((p@tmy-)#y3i_ad=n!pm4@_h2c60+1m9gty"
+          DJANGO_ALLOWED_HOSTS: "*"
+          POSTGRES_DB: "FikoDB"
+          POSTGRES_USER: "FikoUsr"
+          POSTGRES_PASSWORD: "FikoPass123!!!"
+          POSTGRES_HOST: "db"
+          POSTGRES_PORT: 5432
+          REDIS_URL: "redis://redis:6379/0"
 
 
   deploy:
