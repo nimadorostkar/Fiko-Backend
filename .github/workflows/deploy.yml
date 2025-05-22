@@ -30,6 +30,9 @@ jobs:
           MANAGE_PATH=$(find . -name manage.py -exec dirname {} \;)
           cd $MANAGE_PATH
           python manage.py test
+        env:
+          STAGE: "DEV"
+
 
   deploy:
     name: Deploy to AWS EC2
