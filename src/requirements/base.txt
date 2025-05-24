@@ -16,3 +16,5 @@ django-rest-swagger==2.2.0
 drf-yasg==1.21.10
 redis==6.1.0
 django-redis==5.4.0
+boto3==1.38.21
+django-storages==1.14.6

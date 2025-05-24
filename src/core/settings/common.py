@@ -33,6 +33,7 @@ THIRD_PARTY_APPS = (
     "import_export",
     "rest_framework_swagger",
     "drf_yasg",
+    "storages",
 )
 # Apps specific for this project go here.
 LOCAL_APPS = (
