@@ -4,9 +4,6 @@ import sys
 DEBUG=True
 
 
-STATIC_ROOT = 'static'
-MEDIA_ROOT = 'media'
-
 
 LOGGING = {
     'version': 1,
