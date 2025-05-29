@@ -104,24 +104,17 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Internationalization
-# https://docs.djangoproject.com/en/3.2/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 SITE_ID = 1
 
-print("======================")
-print(environ.get("AWS_S3_REGION_NAME"))
-print(environ.get("AWS_ACCESS_KEY_ID"))
 
+# --- S3 storages ---
 AWS_ACCESS_KEY_ID = environ.get("AWS_ACCESS_KEY_ID"),
 AWS_SECRET_ACCESS_KEY = environ.get("AWS_SECRET_ACCESS_KEY")
 AWS_STORAGE_BUCKET_NAME = environ.get("AWS_STORAGE_BUCKET_NAME")
