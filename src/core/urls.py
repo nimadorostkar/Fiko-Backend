@@ -25,6 +25,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='home'),
     path('api/v1/usr/', include(('accounts.urls', 'accounts'), namespace='accounts')),
+    path('api/v1/settings/', include(('settings.urls', 'accounts'), namespace='settings')),
+    path('api/v1/billing/', include(('billing.urls', 'accounts'), namespace='billing')),
 ]
 urlpatterns += static(MEDIA_URL, document_root=MEDIA_ROOT)
 urlpatterns += static(STATIC_URL, document_root=STATIC_ROOT)
