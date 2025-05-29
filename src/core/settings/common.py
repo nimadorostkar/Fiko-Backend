@@ -104,7 +104,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Internationalization
-
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
@@ -124,17 +123,12 @@ AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
 AWS_S3_SIGNATURE_VERSION = "s3v4"
 
-#DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
-#STATICFILES_STORAGE = "storages.backends.s3boto3.S3StaticStorage"
-
 STATICFILES_STORAGE = 'core.settings.storage_backends.StaticStorage'
 DEFAULT_FILE_STORAGE = 'core.settings.storage_backends.MediaStorage'
 
-#MEDIA_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/media/'
-#STATIC_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/static/'
-
 STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
 MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
+
 
 
 # Default primary key field type
