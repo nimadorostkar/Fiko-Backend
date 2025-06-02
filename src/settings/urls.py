@@ -1,6 +1,6 @@
 from django.urls import path
-from accounts.api import LoginAPIView
+from settings.views import PricesAPIView
 
 urlpatterns = [
-    path("aaaa", LoginAPIView.as_view(), name="aaaa"),
+    path("prices", PricesAPIView.as_view(), name="prices"),
 ]
