@@ -1,6 +1,6 @@
 from django.urls import path
-from accounts.api import LoginAPIView
+from billing.api import CurrentPlanAPIView
 
 urlpatterns = [
-    path("aaaa", LoginAPIView.as_view(), name="aaaa"),
+    path("current-plan", CurrentPlanAPIView.as_view(), name="current-plan"),
 ]

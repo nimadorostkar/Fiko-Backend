@@ -11,8 +11,8 @@ class PricesAPIView(APIView):
     permission_classes = [AllowAny]
     def get(self, *args, **kwargs):
         try:
-            prices = Settings.objects.all()
-            serializer = self.serializer_class(prices, many=True)
+            prices = Settings.objects.get(id=1)
+            serializer = self.serializer_class(prices)
             return Response(serializer.data, status=status.HTTP_200_OK)
         except:
             return Response("Prices not found or something went wrong, try again", status=status.HTTP_400_BAD_REQUEST)
