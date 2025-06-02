@@ -54,3 +54,15 @@ class User(AbstractUser):
         if self.profile_picture:
             return mark_safe('<img src="{}" height="20"/>'.format(self.profile_picture.url))
     img_tag.short_description = 'profile'
+
+
+
+
+class Plan(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    days = models.IntegerField(default=0)
+    tokens = models.IntegerField(default=0)
+    emails = models.IntegerField(default=0)
+    updated_at = models.DateField(auto_now=True)
+    def __str__(self):
+        return str(self.user) + ' | days: '+ str(self.days) + ' | tokens: '+ str(self.tokens)

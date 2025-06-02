@@ -1,5 +1,5 @@
 from django.contrib import admin
-from accounts.models import User
+from accounts.models import User,Plan
 from import_export.admin import ImportExportModelAdmin
 
 admin.site.site_header = "Fiko Admin Panel"
@@ -18,3 +18,8 @@ class UserAdmin(ImportExportModelAdmin):
     readonly_fields = field_list
     fields = field_list
 admin.site.register(User, UserAdmin)
+
+
+class PlanAdmin(ImportExportModelAdmin):
+    list_display = ("user", "days", "tokens", "emails", "updated_at")
+admin.site.register(Plan, PlanAdmin)
