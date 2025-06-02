@@ -166,3 +166,18 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10,
 }
 # END REST FRAMEWORK CONFIGURATION
+
+
+
+
+
+
+
+# ZARRINPAL CONFIGURATION
+ZARRINPAL_URL="https://api.zarinpal.com/pg/"
+ZARRINPAL_MERCHANT_ID = "38541d6c-9eb6-45f9-830e-7248be500437"
+ZP_API_REQUEST = "https://www.zarinpal.com/pg/rest/WebGate/PaymentRequest.json"
+ZP_API_VERIFY = "https://www.zarinpal.com/pg/rest/WebGate/PaymentVerification.json"
+ZP_API_STARTPAY = "https://www.zarinpal.com/pg/StartPay/"
+ZARIN_CALL_BACK = 'https://api.fiko.app/api/v1/billing/payment-verify/'
+# END ZARRINPAL CONFIGURATION
