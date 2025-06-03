@@ -1,1 +1,2 @@
-from message.api.conversation import UserConversationsAPIView
+from message.api.conversation import FullUserConversationsAPIView,UserConversationsAPIView,ConversationItemAPIView
+from message.api.tag import TagsAPIView

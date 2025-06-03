@@ -1,7 +1,6 @@
 from rest_framework import serializers
 from message.models import Conversation,Tag,Customer,Message
 
-
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag
@@ -15,6 +14,7 @@ class CustomerSerializer(serializers.ModelSerializer):
 
 
 class ConversationSerializer(serializers.ModelSerializer):
+    customer = CustomerSerializer(read_only=True)
     class Meta:
         model = Conversation
         fields = '__all__'
