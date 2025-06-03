@@ -1,8 +1,7 @@
-from rest_framework.views import APIView
 from rest_framework.response import Response
 from message.serializers import MessageSerializer
 from rest_framework import status, filters
-from message.models import Conversation,Customer,Message
+from message.models import Message
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.permissions import AllowAny,IsAuthenticated
 from rest_framework.generics import GenericAPIView
@@ -33,4 +32,3 @@ class UserMessagesAPIView(GenericAPIView):
             return self.get_paginated_response(serializer.data)
         serializer = self.serializer_class(query, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
-
