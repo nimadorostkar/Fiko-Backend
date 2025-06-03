@@ -39,6 +39,7 @@ LOCAL_APPS = (
     "accounts",
     "settings",
     "billing",
+    "message",
 )
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 # END APP CONFIGURATION
@@ -166,9 +167,6 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10,
 }
 # END REST FRAMEWORK CONFIGURATION
-
-
-
 
 
 

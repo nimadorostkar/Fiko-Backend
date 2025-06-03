@@ -27,6 +27,7 @@ urlpatterns = [
     path('api/v1/usr/', include(('accounts.urls', 'accounts'), namespace='accounts')),
     path('api/v1/settings/', include(('settings.urls', 'accounts'), namespace='settings')),
     path('api/v1/billing/', include(('billing.urls', 'accounts'), namespace='billing')),
+    path('api/v1/message/', include(('message.urls', 'message'), namespace='message')),
 ]
 urlpatterns += static(MEDIA_URL, document_root=MEDIA_ROOT)
 urlpatterns += static(STATIC_URL, document_root=STATIC_ROOT)
