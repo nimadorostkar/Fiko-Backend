@@ -21,6 +21,8 @@ class ConversationSerializer(serializers.ModelSerializer):
 
 
 class MessageSerializer(serializers.ModelSerializer):
+    customer = CustomerSerializer(read_only=True)
+    conversation = ConversationSerializer(read_only=True)
     class Meta:
         model = Message
         fields = '__all__'
