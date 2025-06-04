@@ -1,0 +1,1 @@
+from message.telegram_bot import telegram_webhook
