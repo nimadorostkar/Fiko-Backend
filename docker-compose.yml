@@ -5,7 +5,8 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: django_app
-    command: python src/manage.py runserver 0.0.0.0:443
+    #command: python src/manage.py runserver 0.0.0.0:443
+    command: gunicorn src.wsgi:application --bind 0.0.0.0:443
 
     volumes:
       - ./src:/app
@@ -15,8 +16,6 @@ services:
       - "443:443"
     env_file:
       - .env
-    expose:
-      - "443"
     depends_on:
       - db
       - redis
