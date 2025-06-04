@@ -5,16 +5,18 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: django_app
-    command: python src/manage.py runserver 0.0.0.0:443
+    command: python src/manage.py runserver 0.0.0.0:8000
 
     volumes:
       - ./src:/app
       - static_volume:/app/static
       - media_volume:/app/media
     ports:
-      - "443:443"
+      - "8000:8000"
     env_file:
       - .env
+    expose:
+      - "8000"
     depends_on:
       - db
       - redis
