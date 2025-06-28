@@ -178,3 +178,11 @@ ZP_API_VERIFY = "https://www.zarinpal.com/pg/rest/WebGate/PaymentVerification.js
 ZP_API_STARTPAY = "https://www.zarinpal.com/pg/StartPay/"
 ZARIN_CALL_BACK = 'https://api.fiko.app/api/v1/billing/payment-verify/'
 # END ZARRINPAL CONFIGURATION
+
+
+# CORSHEADERS CONFIGURATION
+CORS_ALLOWED_ORIGINS = ['https://api.fiko.net','http://localhost:8000']
+CSRF_TRUSTED_ORIGINS = ['https://api.fiko.net','http://localhost:8000']
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ALLOW_CREDENTIALS = True
+# END CORSHEADERS CONFIGURATION
