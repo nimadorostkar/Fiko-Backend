@@ -3,9 +3,9 @@ FROM nginxinc/nginx-unprivileged:1.20-alpine
 COPY ./run.sh /run.sh
 COPY default.conf /etc/nginx/default.conf.tpl
 
-ENV LISTEN_PORT=443
+ENV LISTEN_PORT=8000
 ENV APP_HOST=app
-ENV APP_LISTEN=443
+ENV APP_LISTEN=8000
 
 USER root
 
