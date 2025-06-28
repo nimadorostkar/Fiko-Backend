@@ -57,7 +57,6 @@ class User(AbstractUser):
 
 
 
-
 class Plan(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     days = models.IntegerField(default=0)

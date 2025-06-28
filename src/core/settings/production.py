@@ -1,5 +1,4 @@
 from .common import *
-
 DEBUG=False
 
 import sentry_sdk
