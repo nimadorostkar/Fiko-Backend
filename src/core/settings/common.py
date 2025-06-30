@@ -179,9 +179,26 @@ ZARIN_CALL_BACK = 'https://api.fiko.app/api/v1/billing/payment-verify/'
 # END ZARRINPAL CONFIGURATION
 
 
+""" 
 # CORSHEADERS CONFIGURATION
 CORS_ALLOWED_ORIGINS = ['https://app.fiko.net','https://api.fiko.net','https://fiko.net','http://localhost:8000','http://localhost:3000']
 CSRF_TRUSTED_ORIGINS = ['https://app.fiko.net','https://api.fiko.net','https://fiko.net','http://localhost:8000','http://localhost:3000']
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
+# END CORSHEADERS CONFIGURATION
+"""
+
+
+# CORSHEADERS CONFIGURATION
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:8000',
+    'http://localhost:3000',
+    'https://app.fiko.net',
+    'https://api.fiko.net',
+    'https://fiko.net',
+    'http://127.0.0.1:8000',
+    'http://127.0.0.1:3000'
+]
 # END CORSHEADERS CONFIGURATION
