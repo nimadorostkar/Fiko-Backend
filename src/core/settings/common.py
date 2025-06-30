@@ -12,6 +12,7 @@ SECRET_KEY = environ.get("SECRET_KEY"),
 # SECURITY WARNING: don't run with debug turned on in production!
 ALLOWED_HOSTS = ['*']
 
+
 # APP CONFIGURATION
 DJANGO_APPS = (
     "django.contrib.auth",
