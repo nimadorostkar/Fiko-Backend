@@ -27,4 +27,3 @@ def telegram_webhook(request):
 
         return JsonResponse({"status": "ok"})
     return JsonResponse({"status": "invalid"})
-
