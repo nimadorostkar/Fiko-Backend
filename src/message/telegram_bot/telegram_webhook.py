@@ -15,6 +15,11 @@ def telegram_webhook(request):
         chat_id = data['message']['chat']['id']
         message_text = data['message']['text']
 
+        print(chat_id)
+        print(message_text)
+        print("---------")
+        print(data)
+
         # You can now process or store this message, or send it over WebSocket
 
         # Optional: respond back
