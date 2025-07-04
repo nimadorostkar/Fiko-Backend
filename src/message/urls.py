@@ -11,6 +11,5 @@ urlpatterns = [
     path("customers", CustomersListAPIView.as_view(), name="customers"),
     path("customer-item/<int:id>/", CustomerItemAPIView.as_view(), name="customer-item"),
     path("user-messages", UserMessagesAPIView.as_view(), name="user-messages"),
-    #
-    #path("telegram-webhook/", telegram_webhook, name="telegram-webhook"),
+    path('webhook/', telegram_webhook.as_view(), name='webhook')
 ]

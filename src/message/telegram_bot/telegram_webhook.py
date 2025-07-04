@@ -1,6 +1,11 @@
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 import json
+import traceback
+from rest_framework import status
+from rest_framework.request import Request
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 
 @csrf_exempt
@@ -17,3 +22,4 @@ def telegram_webhook(request):
 
         return JsonResponse({"status": "ok"})
     return JsonResponse({"status": "invalid"})
+
