@@ -147,6 +147,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = "accounts.User"
 # END AUTH USER MODEL CONFIGURATION
 
+APPEND_SLASH = False
+
+
 # OTP CONFIGURATION
 OTP_CODE_LENGTH = int(os.getenv("OTP_CODE_LENGTH", default="4"))
 OTP_TTL = int(os.getenv("OTP_TTL", default="120"))
