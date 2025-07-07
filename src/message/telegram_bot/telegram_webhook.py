@@ -28,7 +28,6 @@ class TelegramWebhook(APIView):
             print(first_name)
             print(bot_name)
 
-
             # You can now process or store this message, or send it over WebSocket
             # Optional: respond back
             # send_telegram_message(chat_id, "Received your message!")
