@@ -11,7 +11,7 @@ from rest_framework.permissions import AllowAny,IsAuthenticated
 
 class TelegramWebhook(APIView):
     permission_classes = [AllowAny]
-    def post(self, bot_name, *args, **kwargs):
+    def post(self, *args, **kwargs):
         try:
             data = json.loads(self.request.body.decode("utf-8"))
             user_info = data['message']['from']
@@ -25,7 +25,7 @@ class TelegramWebhook(APIView):
             print(message_text)
             print(telegram_id)
             print(first_name)
-            print(bot_name)
+            print(self.kwargs["bot_name"])
 
             # You can now process or store this message, or send it over WebSocket
             # Optional: respond back
