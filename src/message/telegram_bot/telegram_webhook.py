@@ -15,7 +15,6 @@ class TelegramWebhook(APIView):
         try:
             data = json.loads(self.request.body.decode("utf-8"))
             user_info = data['message']['from']
-
             print(("---"))
             chat_id = data['message']['chat']['id']
             message_text = data['message']['text']
@@ -34,6 +33,7 @@ class TelegramWebhook(APIView):
             return JsonResponse({"status": "ok"})
         except Exception as e:
             return Response(f"Error: {str(e)}", status=status.HTTP_400_BAD_REQUEST)
+
 
 
 
