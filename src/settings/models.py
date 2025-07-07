@@ -1,5 +1,21 @@
 from django.db import models
 from django.core.exceptions import ValidationError
+from accounts.models import User
+
+
+class TelegramChannel(models.Model):
+    is_connect = models.BooleanField(default=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    bot_token = models.CharField(max_length=200,unique=True)
+    bot_username = models.CharField(max_length=100,unique=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    def __str__(self):
+        return str(self.bot_username)
+
+
+
+
 
 class SingletonModel(models.Model):
     class Meta:

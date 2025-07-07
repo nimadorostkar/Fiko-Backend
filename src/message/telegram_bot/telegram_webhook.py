@@ -7,6 +7,10 @@ from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.permissions import AllowAny,IsAuthenticated
+from message.models import Customer,Conversation
+
+
+# https://api.telegram.org/bot7999169851:AAFiDl9SZIa3JvMVGyYBo_gLbI3X4mIacGQ/setWebhook?url=https://api.fiko.net/api/v1/message/webhook/fikotest_bot/
 
 
 class TelegramWebhook(APIView):
@@ -15,17 +19,34 @@ class TelegramWebhook(APIView):
         try:
             data = json.loads(self.request.body.decode("utf-8"))
             user_info = data['message']['from']
-            print(("---"))
             chat_id = data['message']['chat']['id']
             message_text = data['message']['text']
             telegram_id = user_info['id']
             first_name = user_info.get('first_name', '')
             last_name = user_info.get('last_name', '')
-            print(chat_id)
-            print(message_text)
-            print(telegram_id)
-            print(first_name)
-            print(self.kwargs["bot_name"])
+            bot_name = self.kwargs["bot_name"]
+
+
+            # Create or update Customer
+            customer, created = Customer.objects.update_or_create(
+                source='telegram',source_id=telegram_id,
+                defaults={'first_name':first_name,'last_name':last_name,}
+            )
+            action = "created" if created else "updated"
+            print(f"Customer {action}: {customer}")
+
+            # Create or update Conversation
+            conversation, created = Conversation.objects.update_or_create(
+                user='',source='telegram', customer=customer,
+            )
+            action = "created" if created else "updated"
+            print(f"Customer {action}: {conversation}")
+
+
+
+
+
+
 
             # You can now process or store this message, or send it over WebSocket
             # Optional: respond back
@@ -35,24 +56,3 @@ class TelegramWebhook(APIView):
             return Response(f"Error: {str(e)}", status=status.HTTP_400_BAD_REQUEST)
 
 
-
-
-
-@csrf_exempt
-def telegram_webhook(request):
-    if request.method == "POST":
-        data = json.loads(request.body.decode("utf-8"))
-        chat_id = data['message']['chat']['id']
-        message_text = data['message']['text']
-
-        print(chat_id)
-        print(message_text)
-        print("---------")
-        print(data)
-
-        # You can now process or store this message, or send it over WebSocket
-        # Optional: respond back
-        # send_telegram_message(chat_id, "Received your message!")
-
-        return JsonResponse({"status": "ok"})
-    return JsonResponse({"status": "invalid"})

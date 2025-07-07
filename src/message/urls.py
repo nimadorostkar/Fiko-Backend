@@ -14,6 +14,5 @@ urlpatterns = [
     path("user-messages", UserMessagesAPIView.as_view(), name="user-messages"),
     #
     path("webhook/<str:bot_name>/", TelegramWebhook.as_view(), name="webhook"),
-    #path('tele-webhook/', telegram_webhook, name="tele-webhook"),
 ]
 
