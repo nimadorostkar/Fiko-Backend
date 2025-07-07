@@ -8,9 +8,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.permissions import AllowAny,IsAuthenticated
 from message.models import Customer,Conversation
-
-
-# https://api.telegram.org/bot7999169851:AAFiDl9SZIa3JvMVGyYBo_gLbI3X4mIacGQ/setWebhook?url=https://api.fiko.net/api/v1/message/webhook/fikotest_bot/
+from settings.models import TelegramChannel
 
 
 class TelegramWebhook(APIView):
@@ -26,6 +24,8 @@ class TelegramWebhook(APIView):
             last_name = user_info.get('last_name', '')
             bot_name = self.kwargs["bot_name"]
 
+            channel = TelegramChannel.objects.get(bot_username=bot_name)
+            bot_user = channel.user
 
             # Create or update Customer
             customer, created = Customer.objects.update_or_create(
@@ -37,15 +37,10 @@ class TelegramWebhook(APIView):
 
             # Create or update Conversation
             conversation, created = Conversation.objects.update_or_create(
-                user='',source='telegram', customer=customer,
+                user=bot_user,source='telegram', customer=customer,
             )
             action = "created" if created else "updated"
             print(f"Customer {action}: {conversation}")
-
-
-
-
-
 
 
             # You can now process or store this message, or send it over WebSocket
