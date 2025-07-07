@@ -12,7 +12,7 @@ class ConnectTeleAPIView(APIView):
     permission_classes = [IsAuthenticated]
     def post(self, *args, **kwargs):
         data = self.request.data
-        data["user"] = self.request.user
+        data["user"] = self.request.user.id
         serializer = self.serializer_class(data=data)
         if serializer.is_valid():
             serializer.save()

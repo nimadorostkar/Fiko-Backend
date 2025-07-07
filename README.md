@@ -109,6 +109,14 @@ docker-compose exec web python manage.py createsuperuser
 docker compose exec web python manage.py createsuperuser
 ```
 
+### Or Using docker exec
+
+```bash
+docker exec -it <container_name> python manage.py makemigrations
+docker exec -it <container_name> python manage.py migrate
+```
+
+
 ---
 
 ## 🗂️ Volumes
