@@ -13,6 +13,7 @@ urlpatterns = [
     path("customer-item/<int:id>/", CustomerItemAPIView.as_view(), name="customer-item"),
     path("user-messages", UserMessagesAPIView.as_view(), name="user-messages"),
     #
-    path("webhook/", TelegramWebhook.as_view(), name="webhook"),
+    path("webhook/<str:bot_name>/", TelegramWebhook.as_view(), name="webhook"),
     #path('tele-webhook/', telegram_webhook, name="tele-webhook"),
 ]
+
