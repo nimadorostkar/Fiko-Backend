@@ -1,4 +1,3 @@
-from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 import json
 import traceback
@@ -27,7 +26,7 @@ class TelegramWebhook(APIView):
             channel = TelegramChannel.objects.get(bot_username=bot_name)
             bot_user = channel.user
 
-            # Create or update Customer -----------------
+            # Create or update Customer
             customer, created = Customer.objects.update_or_create(
                 source='telegram',source_id=telegram_id,
                 defaults={'first_name':first_name,'last_name':last_name,}
@@ -35,14 +34,14 @@ class TelegramWebhook(APIView):
             action = "created" if created else "updated"
             print(f"Customer {action}: {customer}")
 
-            # Create or update Conversation -----------------
+            # Create or update Conversation
             conversation, created = Conversation.objects.update_or_create(
                 user=bot_user,source='telegram', customer=customer,
             )
             action = "created" if created else "updated"
             print(f"Conversation {action}: {conversation}")
 
-            # Create Message -----------------
+            # Create Message
             message = Message.objects.create(content=message_text, conversation=conversation, customer=customer,)
             print(f"Message created: {message}")
 
