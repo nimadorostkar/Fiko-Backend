@@ -58,6 +58,12 @@ class Conversation(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    def save(self, *args, **kwargs):
+        # Automatically set title if not manually set
+        if not self.title:
+            self.title = f"{self.user} - {self.source} - {self.customer}"
+        super().save(*args, **kwargs)
+
     def __str__(self):
         return f"Conversation with {self.customer} by {self.user} (Status: {self.status})"
 

@@ -40,7 +40,7 @@ class TelegramWebhook(APIView):
                 user=bot_user,source='telegram', customer=customer,
             )
             action = "created" if created else "updated"
-            print(f"Customer {action}: {conversation}")
+            print(f"Conversation {action}: {conversation}")
 
 
             # You can now process or store this message, or send it over WebSocket
