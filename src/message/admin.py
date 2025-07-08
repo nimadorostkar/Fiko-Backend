@@ -17,6 +17,6 @@ class CustomerAdmin(admin.ModelAdmin):
 admin.site.register(Customer, CustomerAdmin)
 
 class MessageAdmin(admin.ModelAdmin):
-    list_display = ('content', 'type', 'conversation', 'is_ai_response', 'is_answered',  'created_at', 'id')
+    list_display = ('content', 'customer', 'type', 'conversation', 'is_ai_response', 'is_answered',  'created_at', 'id')
     list_filter = ("type", "conversation", "created_at")
 admin.site.register(Message, MessageAdmin)
