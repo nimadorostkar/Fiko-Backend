@@ -3,7 +3,7 @@ from message.models import Conversation,Tag,Customer,Message
 
 
 class ConversationAdmin(admin.ModelAdmin):
-    list_display = ('user', 'title', 'created_at', 'status')
+    list_display = ('id', 'user', 'title', 'created_at', 'status')
     list_filter = ("created_at", "status")
 admin.site.register(Conversation, ConversationAdmin)
 
@@ -17,6 +17,6 @@ class CustomerAdmin(admin.ModelAdmin):
 admin.site.register(Customer, CustomerAdmin)
 
 class MessageAdmin(admin.ModelAdmin):
-    list_display = ('type', 'conversation', 'is_ai_response', 'is_answered',  'created_at', 'id')
+    list_display = ('id', 'type', 'conversation', 'is_ai_response', 'is_answered',  'created_at', 'id')
     list_filter = ("type", "conversation", "created_at")
 admin.site.register(Message, MessageAdmin)

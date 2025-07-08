@@ -1,11 +1,9 @@
 from django.http import JsonResponse
 import json
-import traceback
 from rest_framework import status
-from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework.permissions import AllowAny,IsAuthenticated
+from rest_framework.permissions import AllowAny
 from message.models import Customer,Conversation,Message
 from settings.models import TelegramChannel
 

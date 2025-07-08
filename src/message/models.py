@@ -61,7 +61,7 @@ class Conversation(models.Model):
     def save(self, *args, **kwargs):
         # Automatically set title if not manually set
         if not self.title:
-            self.title = f"{self.user} - {self.source} - {self.customer}"
+            self.title = f"{self.source} - {self.customer}"
         super().save(*args, **kwargs)
 
     def __str__(self):
