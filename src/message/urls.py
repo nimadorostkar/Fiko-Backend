@@ -15,4 +15,3 @@ urlpatterns = [
     #
     path("webhook/<str:bot_name>/", TelegramWebhook.as_view(), name="webhook"),
 ]
-
