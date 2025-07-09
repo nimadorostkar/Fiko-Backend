@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from settings.serializers import TelegramChannelSerializer
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
@@ -6,7 +5,19 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from settings.models import Settings,TelegramChannel
 import requests
-from django.http import JsonResponse
+
+
+class TeleBotAPIView(APIView):
+    serializer_class = TelegramChannelSerializer
+    permission_classes = [IsAuthenticated]
+    def get(self, *args, **kwargs):
+        try:
+            bot = TelegramChannel.objects.filter(user=self.request.user)
+            serializer = self.serializer_class(bot, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except:
+            return Response("Bot not found or something went wrong, try again", status=status.HTTP_400_BAD_REQUEST)
+
 
 
 class ConnectTeleAPIView(APIView):
@@ -47,7 +58,6 @@ class ConnectTeleAPIView(APIView):
         base_url = f"https://api.telegram.org/bot{bot_token}/setWebhook"
         webhook_target = f"https://api.fiko.net/api/v1/message/webhook/{bot_username}/"
         return f"{base_url}?url={webhook_target}"
-
 
 
 
